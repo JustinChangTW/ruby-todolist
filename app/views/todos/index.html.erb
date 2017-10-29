@@ -1,0 +1,9 @@
+<ul>
+    <% @todos.each do |todo| %>
+    <li>
+        <%= todo.name %>
+        <%= todo.due_date %>
+        <%= todo.note %>
+    </li>
+    <% end %>
+</ul>
