@@ -1,9 +1,9 @@
-<%= form_for @todos, :url => todos_path do |f| %>
-    <%= f.label :name, "Name" %>
-    <%= f.text_field :name %>
-    <%= f.label :due_date, "DueDate" %>
-    <%= f.text_field :due_date %>
-    <%= f.label :note, "Note" %>
-    <%= f.text_field :note %>
-    <%= f.submit "Create" %>
+<%= form_for @todos, :url => todos_path do |todo| %>
+    <%= todo.label :name, "Name" %>
+    <%= todo.text_field :name %>
+    <%= todo.label :due_date, "DueDate" %>
+    <%= todo.text_field :due_date %>
+    <%= todo.label :note, "Note" %>
+    <%= todo.text_field :note %>
+    <%= todo.submit "Create" %>
 <% end %>
