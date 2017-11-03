@@ -15,11 +15,22 @@ class TodosController < ApplicationController
     end
 
     def show
-      @photos = Todo.find(params[:id])
+      @todos = Todo.find(params[:id])
+    end
+
+    def edit
+      @todos = Todo.find(params[:id])
+    end
+
+    def update
+      @todos = Todo.find(params[:id])
+      @todos.update_attributes(todo_params)
+
+      redirect_to todos_path(@todos)
     end
 
     private
-    
+      
     def todo_params
       params.require(:todo).permit(:name, :due_date, :note)
     end

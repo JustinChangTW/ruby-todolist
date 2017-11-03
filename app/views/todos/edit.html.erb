@@ -1,0 +1,9 @@
+<%= form_for @todos do |todo| %>
+    <%= todo.label :name, "Name" %>
+    <%= todo.text_field :name %>
+    <%= todo.label :due_date, "DueDate" %>
+    <%= todo.text_field :due_date %>
+    <%= todo.label :note, "Note" %>
+    <%= todo.text_field :note %>
+    <%= todo.submit "Update" %>
+<% end %>
