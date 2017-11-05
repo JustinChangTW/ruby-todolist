@@ -1,6 +1,7 @@
 <ul>
     <% @todos.each do |todo| %>
     <li>
+        <input type="checkbox" name="todo_doen" value=<%=todo.id%> <%= todo.doen.to_s=="true" ? "checked":"" %>  >
         <%= todo.name %>
         <%= todo.due_date %>
         <%= todo.note %>
