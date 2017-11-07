@@ -1,16 +1,25 @@
-<ul>
+<table class="table table-striped table-condesd">
+    <tr>
+        <th>已完成</th>
+        <th>工作名稱</th>
+        <th>完成日期</th>
+        <th>工作內容</th>
+        <th>顯示</th>
+        <th>編輯</th>
+        <th>刪除</th>
+    </tr>
     <% @todos.each do |todo| %>
-    <li>
-        <%= check_box_tag todo.id, true ,checked = todo.done,disabled: true %>
-        <%= todo.name %>
-        <%= todo.due_date %>
-        <%= todo.note %>
-        <%= link_to  "Show", todo_path(todo) %>
+    <tr>
+        <td><%= check_box_tag todo.id, true ,checked = todo.done,disabled: true %></td>
+        <td><%= todo.name %></td>
+        <td><%= todo.due_date %></td>
+        <td><%= todo.note %></td>
+        <td><%= link_to  "Show", todo_path(todo) %></td>
         <% if (todo.is_due_date_over) %>
-        <%= link_to  "Edit", edit_todo_path(todo) %>
-        <%= link_to  "Destroy", todo_path(todo),method: :delete,data:{confirm:"Are you sure?"} %>
+        <td><%= link_to  "Edit", edit_todo_path(todo) %></td>
+        <td><%= link_to  "Destroy", todo_path(todo),method: :delete,data:{confirm:"Are you sure?"} %></td>
         <% end %>
-    </li>
+    </tr>
     <% end %>
-</ul>
+</table>
 <%= link_to  "New Photo", new_todo_path %>

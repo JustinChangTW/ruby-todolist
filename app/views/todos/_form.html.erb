@@ -8,14 +8,24 @@
     </ul>
 <% end %>
 
-<%= form_for @todos do |todo| %>
-    <%= todo.label :done, "Done" %>
-    <%= check_box_tag "todo[done]", true ,checked = :done %>
-    <%= todo.label :name, "Name" %>
-    <%= todo.text_field :name %>
-    <%= todo.label :due_date, "DueDate" %>
-    <%= todo.text_field :due_date %>
-    <%= todo.label :note, "Note" %>
-    <%= todo.text_field :note %>
-    <%= todo.submit "Update" %>
-<% end %>
+<div class="from container">
+    <%= form_for @todos do |todo| %>
+        <div class="form-group">
+            <%= todo.label :done, "Done" %>
+            <%= check_box_tag "todo[done]", true ,checked = @todo["done"] %>
+        </div>
+        <div class="form-group">
+            <%= todo.label :name, "Name" %>
+            <%= todo.text_field :name %>
+        </div>
+        <div class="form-group">
+            <%= todo.label :due_date, "DueDate" %>
+            <%= todo.text_field :due_date %>
+        </div>
+        <div class="form-group">
+            <%= todo.label :note, "Note" %>
+            <%= todo.text_field :note %>
+        </div>
+        <%= todo.submit "Update" %>
+    <% end %>
+</div>
