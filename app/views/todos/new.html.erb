@@ -1,4 +1,15 @@
+<% if @todos.errors.present? %>
+    <ul>
+        <% @todos.errors.each do |error, message| %>
+            <li>
+                <%= "#{error.capitalize}  #{message}" %>
+            </li>
+            <% end %>
+    </ul>
+<% end %>
 <%= form_for @todos, :url => todos_path do |todo| %>
+    <%= todo.label :done, "Done" %>
+    <%= check_box_tag "todo[done]", true ,checked = false %>
     <%= todo.label :name, "Name" %>
     <%= todo.text_field :name %>
     <%= todo.label :due_date, "DueDate" %>

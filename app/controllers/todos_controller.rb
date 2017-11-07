@@ -8,7 +8,11 @@ class TodosController < ApplicationController
     end
 
     def create
-      @todos = Todo.new(todo_params)
+      @parms=todo_params
+      if (@parms[:done] == nil)
+        @parms[:done] = false
+      end
+      @todos = Todo.new(@parms)
       if @todos.save
         redirect_to todos_url
       else
