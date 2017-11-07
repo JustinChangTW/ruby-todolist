@@ -1,6 +1,8 @@
 class Todo < ApplicationRecord
-    def is_due_date_over
 
+    validates_presence_of :name, :due_date, :note, :done
+
+    def is_due_date_over
       date = Time.new.to_s
       year, month, day = date.split(/-/)
 

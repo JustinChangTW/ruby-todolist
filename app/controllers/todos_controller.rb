@@ -9,9 +9,11 @@ class TodosController < ApplicationController
 
     def create
       @todos = Todo.new(todo_params)
-      @todos.save
-
-      redirect_to todos_url
+      if @todos.save
+        redirect_to todos_url
+      else
+        render :action => :new
+      end
     end
 
     def show
@@ -28,9 +30,12 @@ class TodosController < ApplicationController
       if (@parms[:done] == nil)
         @parms[:done] = false
       end
-      @todos.update_attributes(@parms)
-
-      redirect_to todos_path(@todos)
+      
+      if @todos.update_attributes(@parms)
+        redirect_to todos_path(@todos)
+      else
+        render :action => :edit
+      end
     end
 
     def destroy
