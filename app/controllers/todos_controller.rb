@@ -24,7 +24,11 @@ class TodosController < ApplicationController
 
     def update
       @todos = Todo.find(params[:id])
-      @todos.update_attributes(todo_params)
+      @parms=todo_params
+      if (@parms[:done] == nil)
+        @parms[:done] = false
+      end
+      @todos.update_attributes(@parms)
 
       redirect_to todos_path(@todos)
     end
@@ -40,6 +44,6 @@ class TodosController < ApplicationController
     private
 
     def todo_params
-      params.require(:todo).permit(:name, :due_date, :note)
+      params.require(:todo).permit(:name, :due_date, :note, :done)
     end
 end
