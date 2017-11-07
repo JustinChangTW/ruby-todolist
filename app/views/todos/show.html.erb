@@ -1,4 +1,4 @@
-<%= check_box_tag @todos.id, true ,checked = @todos.done %>
-<%= @photos.name %>
-<%= @photos.due_date %>
-<%= @photos.note %>
+<%= check_box_tag @todos.id, true ,checked = @todos.done,disabled: true %>
+<%= @todos.name %>
+<%= @todos.due_date %>
+<%= @todos.note %>

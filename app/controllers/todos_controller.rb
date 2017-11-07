@@ -1,4 +1,7 @@
 class TodosController < ApplicationController
+
+    # action中重覆執行的動作利用before_action，將覆重式碼注入（掛勾）
+    before_action :set_todo, :only => [:show,:edit,:update,:destroy]
     def index
       @todos=Todo.all        
     end
@@ -55,4 +58,10 @@ class TodosController < ApplicationController
     def todo_params
       params.require(:todo).permit(:name, :due_date, :note, :done)
     end
+
+    # 將常用的程式碼抽出作方法
+    def set_todo
+      @todo = Todo.find(params[:id])
+    end
+
 end
